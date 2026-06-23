@@ -2,4 +2,5 @@
 
 # Performed Azure Fundaments hands-on practice with Terraform
 
-# Created resource group, VNet, subnet, network rules and VM
+# Further enhanced my original idea and secured my environment
+
