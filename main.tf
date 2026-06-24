@@ -2,6 +2,8 @@ variable "subscription_id" { type = string }
 variable "client_id" { type = string }
 variable "client_secret" { type = string }
 variable "tenant_id" { type = string }
+variable "admin_password" { type = string }
+variable "administrator_login_password" { type = string }
 
 
 terraform {
@@ -100,7 +102,7 @@ resource "azurerm_mssql_server" "terrapractice_MSSQL" {
   location                     = azurerm_resource_group.terrapractice-rg.location
   version                      = "12.0"
   administrator_login          = "Administrator"
-  administrator_login_password = "p455w0rd"
+  administrator_login_password = var.administrator_login_password
 }
 
 resource "azurerm_mssql_database" "first_mssql-database" {
@@ -264,7 +266,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "terrapractice-rg" {
   sku                             = "Standard_F2"
   instances                       = 1
   admin_username                  = "adminuser"
-  admin_password                  = "P@ssw0rd1234!"
+  admin_password                  = var.admin_password
   disable_password_authentication = false
 
   source_image_reference {
